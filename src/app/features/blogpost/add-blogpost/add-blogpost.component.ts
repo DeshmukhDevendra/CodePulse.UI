@@ -5,11 +5,12 @@ import { DatePipe } from '@angular/common';
 import { BlogPostService } from '../services/blog-post.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
   selector: 'app-add-blogpost',
   standalone: true,
-  imports: [FormsModule,DatePipe],
+  imports: [FormsModule,DatePipe,MarkdownModule],
   templateUrl: './add-blogpost.component.html',
   styleUrl: './add-blogpost.component.css'
 })
