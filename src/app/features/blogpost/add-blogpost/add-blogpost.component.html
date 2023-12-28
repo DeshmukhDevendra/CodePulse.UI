@@ -89,6 +89,22 @@
                 [(ngModel)]="model.author">
             </div>
 
+            <div class="mt-3">
+                <label for="categories" class="form-label">Categories</label>
+                @if(categories$ | async){
+                <ng-container>
+                    <select name="categories" 
+                    id="categories" 
+                    class="form-control" multiple
+                    [(ngModel)]="model.categories">
+                        @for (category of categories$ | async; track $index) {
+                            <option [value]="category.id">{{category.name}}</option>
+                        }
+                    </select>
+                </ng-container>
+            }
+            </div>
+
             <div class="form-check mt-3">
                 <input class="form-check-input" type="checkbox" value="" 
                 id="isVisible"
