@@ -5,17 +5,18 @@ import { BlogPostService } from '../services/blog-post.service';
 import { BlogPost } from '../models/blog-post.model';
 import { MarkdownModule } from 'ngx-markdown';
 import { FormsModule } from '@angular/forms';
-import { AsyncPipe, DatePipe } from '@angular/common';
+import { AsyncPipe, DatePipe, NgClass } from '@angular/common';
 import { CategoryService } from '../../category/services/category.service';
 import { Category } from '../../category/models/category.model';
 import { UpdateBlogPost } from '../models/edit-blog-post.model';
+import { ImageSelectorComponent } from "../../../shared/components/image-selector/image-selector.component";
 
 @Component({
-  selector: 'app-edit-blogpost',
-  standalone: true,
-  imports: [FormsModule,MarkdownModule,DatePipe, AsyncPipe],
-  templateUrl: './edit-blogpost.component.html',
-  styleUrl: './edit-blogpost.component.css'
+    selector: 'app-edit-blogpost',
+    standalone: true,
+    templateUrl: './edit-blogpost.component.html',
+    styleUrl: './edit-blogpost.component.css',
+    imports: [FormsModule, MarkdownModule, DatePipe, AsyncPipe, ImageSelectorComponent, NgClass]
 })
 export class EditBlogpostComponent implements OnInit, OnDestroy{
   id:string | null = null;
@@ -26,6 +27,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy{
   model?:BlogPost;
   categories$?: Observable<Category[]>;
   selectedCategories?: string[];
+  isImageSelectorVisible: boolean = false;
 
   constructor(private route:ActivatedRoute,
               private blogPostService: BlogPostService,
@@ -87,6 +89,14 @@ export class EditBlogpostComponent implements OnInit, OnDestroy{
           }
         })
     }
+  }
+
+  openImageSelector():void{
+    this.isImageSelectorVisible = true;
+  }
+
+  closeImageSelector():void{
+    this.isImageSelectorVisible = false;
   }
 
   ngOnDestroy(): void {
