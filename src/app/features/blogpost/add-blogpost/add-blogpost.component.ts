@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AsyncPipe, DatePipe, NgClass } from '@angular/common';
 import { BlogPostService } from '../services/blog-post.service';
 import { Observable, Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MarkdownModule } from 'ngx-markdown';
 import { CategoryService } from '../../category/services/category.service';
 import { Category } from '../../category/models/category.model';
@@ -14,7 +14,7 @@ import { ImageService } from '../../../shared/components/image-selector/image.se
 @Component({
   selector: 'app-add-blogpost',
   standalone: true,
-  imports: [FormsModule,DatePipe,AsyncPipe,MarkdownModule,NgClass,ImageSelectorComponent],
+  imports: [FormsModule,DatePipe,AsyncPipe,MarkdownModule,NgClass,ImageSelectorComponent, RouterLink],
   templateUrl: './add-blogpost.component.html',
   styleUrl: './add-blogpost.component.css'
 })
